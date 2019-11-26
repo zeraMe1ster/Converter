@@ -2,6 +2,7 @@ package com.example.application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,11 +31,22 @@ public class MainActivity extends AppCompatActivity {
 
                 double multiplier = 39.37;
                 double result = 0.0;
-                double meterValue = Double.parseDouble(etMeter.getText().toString());
 
-                result = meterValue * multiplier;
+                if(etMeter.getText().equals("")){
+                    tvResult.setText(R.string.error_name);
+                    tvResult.setTextColor(Color.RED);
 
-                tvResult.setText(Double.toString(result) + " inches");
+                } else {
+
+                    double meterValue = Double.parseDouble(etMeter.getText().toString());
+
+                    result = meterValue * multiplier;
+
+                    tvResult.setText(String.format("%.2f", result + " inches"));
+
+                }
+
+
 
             }
         });
